@@ -9,6 +9,7 @@ CPU 8086
 ; Rev 1.9	: Allow hard disk boot if sense switch # 3 is set. Also
 ;		: allow lowercase letters for command to be accepted.
 
+; Ported to YASM by Lubomir Rintel <lkundrak@v3.sk> 4-29-2024
 
 ; To select a disk boot, set one of the following equates
 ; to 1, the rest to 0.

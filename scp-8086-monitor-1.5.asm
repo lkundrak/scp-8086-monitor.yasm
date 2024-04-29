@@ -4,6 +4,7 @@ CPU 8086
 ;   by Tim Paterson
 ; This software is not copyrighted.
 
+; Ported to YASM by Lubomir Rintel <lkundrak@v3.sk> 4-29-2024
 
 ; To select a disk boot, set one of the following equates
 ; to 1, the rest to 0.
