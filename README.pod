@@ -1,0 +1,56 @@
+=head1 SCP 8086 Monitor YASM port
+
+This repository contains a port of SCP 8086 monitor to a reasonably modern
+assembler, YASM.
+
+Included is a simple simulator program to quickly verify resulting ROMs.
+
+=head1 Building and running it
+
+=over
+
+=item C<make rom>
+
+Build the images. Requires YASM installed.
+
+=item C<make emu>
+
+Build the simulator. Requires I<libx86emu>.
+
+=item C<./scpemu scp-8086-monitor-1.9.rom>.
+
+Now you can try running a built image.
+
+=back
+
+=head1 SCP 8086 Monitor
+
+The SCP 8086 Monitor was a simple yet useful monitor/debugger/IPL program
+used with S-100 8086 boards made by Seattle Computer Products. Sources and
+binaries to the various versions of the program are available
+from L<https://github.com/Piggy63/SCP-8086-Monitor>.
+
+The version 1.9 is the latest known one to me. I don't know what the
+licensing conditions are, assuming it's proprietary software.
+
+The version 1.5 appears to be not copyrighted and therefore can be
+used freely.
+
+=head1 YASM port
+
+The port to YASM was basically straightforwared. Here's a few details that
+needed to be addressed:
+
+=over
+
+=item * Archaic 8080-ish opcodes: EI/DI vs. STI/CLI, UP/DOWN vs. CLD/STD, JP (ouch) vs. JMP, etc.
+
+=item * IN/OUT don't take implicit AX/AL arguments
+
+=item * SHL/SHR by one bit still need the 1 argument
+
+=item * Instruction names can't be used as labels: IN/OUT/INT renamed into CHIN/CHOUT/CHINT
+
+=item * ORG can't be moved backwards, program needs to be split into SEGMENTs/SECTIONs
+
+=back
